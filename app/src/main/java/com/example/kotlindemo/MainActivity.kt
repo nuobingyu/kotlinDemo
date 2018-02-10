@@ -2,13 +2,11 @@ package com.example.kotlindemo
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.recyclerView
 import java.util.ArrayList
+import java.util.zip.Inflater
 
 /**
  * Created by 96274 on 2018/2/6.
@@ -19,8 +17,16 @@ public class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
         init()
-
+        if(dataList == null)
+            println("dataList为空")
+        if(recyclerView == null)
+            println("recyclerView为空");
+        if(LinearLayoutManager(this) == null )
+            println("manager为空")
+        if(MyAdapter(this ,dataList) == null )
+            println("adapter为空")
         recyclerView!!.layoutManager = LinearLayoutManager(this)
         recyclerView!!.adapter = MyAdapter(this,dataList)
 
